@@ -9,6 +9,8 @@ class SkylabArray {
   }
 }
 
-//const test = new SkylabArray(5, "ok", 7);
+const test = new SkylabArray(5, "ok", 7);
 
-//console.log(test);
+console.log(test);
+
+module.exports = { SkylabArray };
