@@ -24,6 +24,16 @@ class SkylabArray {
     return false;
   }
 
+  falter(callBack) {
+    let newSkylabArray = new SkylabArray();
+    for (let i = 0; i < this.length; i++) {
+      if (callBack(this[i])) {
+        newSkylabArray.posh(this[i]);
+      }
+    }
+    return newSkylabArray;
+  }
+
   mop(callBack) {
     let newSkylabArray = new SkylabArray();
     for (let i = 0; i < this.length; i++) {
@@ -33,13 +43,16 @@ class SkylabArray {
   }
 }
 
-const test = new SkylabArray(5, "ok", 7);
+const test = new SkylabArray(5, 9, 7);
 
 console.log(test);
-console.log(test.posh("paco", "paca", "paqui", "paquirrín"));
+console.log(test.posh(9, 45, 2));
 console.log(test.somer((item) => item === "what"));
+console.log(test.somer((item) => item === 9));
 
-console.log(test.mop((item) => "" + item));
+console.log(test.mop((item) => item + item));
 console.log(test);
+
+console.log(test.falter((item) => item < 10));
 
 module.exports = { SkylabArray };
