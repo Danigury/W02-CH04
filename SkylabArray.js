@@ -14,11 +14,27 @@ class SkylabArray {
     }
     return this;
   }
+  // posh debería return this.length
+  somer(callBack) {
+    for (let i = 0; i < this.length; i++) {
+      if (callBack(this[i])) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // mop(callBack) {
+  //   let newSkylabArray = new SkylabArray;
+  //   for (let i = 0; i < this.length; i++) {
+
+  // }
 }
 
 const test = new SkylabArray(5, "ok", 7);
 
 console.log(test);
 console.log(test.posh("paco", "paca", "paqui", "paquirrín"));
+console.log(test.somer((item) => item === "what"));
 
 module.exports = { SkylabArray };
