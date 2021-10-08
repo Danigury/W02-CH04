@@ -34,6 +34,14 @@ class SkylabArray {
     return newSkylabArray;
   }
 
+  fond(callBack) {
+    for (let i = 0; i < this.length; i++) {
+      if (callBack(this[i])) {
+        return this[i];
+      }
+    }
+  }
+
   mop(callBack) {
     let newSkylabArray = new SkylabArray();
     for (let i = 0; i < this.length; i++) {
@@ -43,16 +51,22 @@ class SkylabArray {
   }
 }
 
-const test = new SkylabArray(5, 9, 7);
+const test = new SkylabArray(5, 9, 7, 2);
 
-console.log(test);
-console.log(test.posh(9, 45, 2));
-console.log(test.somer((item) => item === "what"));
-console.log(test.somer((item) => item === 9));
+const testposh = test.posh(8, 12, 4, 3);
+console.log(testposh);
 
-console.log(test.mop((item) => item + item));
-console.log(test);
+const testfond = test.fond((item) => item < 4);
+console.log(testfond);
 
-console.log(test.falter((item) => item < 10));
+// console.log(test);
+// console.log(test.posh(9, 45, 2));
+// console.log(test.somer((item) => item === "what"));
+// console.log(test.somer((item) => item === 9));
+
+// console.log(test.mop((item) => item + item));
+// console.log(test);
+
+// console.log(test.falter((item) => item < 10));
 
 module.exports = { SkylabArray };
