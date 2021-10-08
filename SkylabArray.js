@@ -14,11 +14,59 @@ class SkylabArray {
     }
     return this;
   }
+  // posh debería return this.length
+  somer(callBack) {
+    for (let i = 0; i < this.length; i++) {
+      if (callBack(this[i])) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  falter(callBack) {
+    let newSkylabArray = new SkylabArray();
+    for (let i = 0; i < this.length; i++) {
+      if (callBack(this[i])) {
+        newSkylabArray.posh(this[i]);
+      }
+    }
+    return newSkylabArray;
+  }
+
+  fond(callBack) {
+    for (let i = 0; i < this.length; i++) {
+      if (callBack(this[i])) {
+        return this[i];
+      }
+    }
+  }
+
+  mop(callBack) {
+    let newSkylabArray = new SkylabArray();
+    for (let i = 0; i < this.length; i++) {
+      newSkylabArray.posh(callBack(this[i]));
+    }
+    return newSkylabArray;
+  }
 }
 
-const test = new SkylabArray(5, "ok", 7);
+const test = new SkylabArray(5, 9, 7, 2);
 
-console.log(test);
-console.log(test.posh("paco", "paca", "paqui", "paquirrín"));
+const testposh = test.posh(8, 12, 4, 3);
+console.log(testposh);
+
+const testfond = test.fond((item) => item < 4);
+console.log(testfond);
+
+// console.log(test);
+// console.log(test.posh(9, 45, 2));
+// console.log(test.somer((item) => item === "what"));
+// console.log(test.somer((item) => item === 9));
+
+// console.log(test.mop((item) => item + item));
+// console.log(test);
+
+// console.log(test.falter((item) => item < 10));
 
 module.exports = { SkylabArray };
